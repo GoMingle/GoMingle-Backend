@@ -4,7 +4,7 @@ const eventSchema = new Schema({
     name: {type: String, required: true},
     price: {type: String},
     location: {type: String},
-    flier: {type: String},
+    flier: {type: String, required: true},
 }, {
     timestamps: true,
 })
