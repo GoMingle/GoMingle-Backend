@@ -1,7 +1,7 @@
 import express from "express";
-import mongoose from "mongoose";
 import { dbconnection } from "./config/db.js";
-import EventRouter from "./routes/eventRoutes.js";
+import eventRoutes from "./routes/eventRoutes.js";
+import userRouter from "./routes/userRoutes.js";
 
 
 // Connect to express app
@@ -13,8 +13,8 @@ dbconnection();
 app.use(express.json());
 
 // Use routes
-app.use(EventRouter);
-// app.use();
+app.use(eventRoutes);
+app.use(userRouter);
 
 const port = process.env.PORT || 9000;
 app.listen(port, () => {

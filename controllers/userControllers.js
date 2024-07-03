@@ -2,44 +2,41 @@ import { userModel } from "../models/userModel.js";
 
 
 
-
-
-// post User
+// Post User
 export const postUser = async (req, res, next) => {
     try {
-        // Add event to database
+        // Add user to database
         const newUser = await userModel.create(req.body);
         // Return response
-        res.json(newUser)
+        res.status(201).json(newUser);
     } catch (error) {
-        next(error)
+        next(error);
     }
 };
 
-// update User
-
+// Patch User
 export const patchUser = async (req, res, next) => {
     try {
-        // update User by id
-        const updateUser = await userModel.findByIdAndUpdate(req.params.id, req.body);
+        // Update user by id
+        const updateUser = await userModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
         // Return response
-        res.json(updateUser)
+        res.status(200).json(updateUser);
     } catch (error) {
-        next(error)   
-    } 
+        next(error);
+    }
 };
 
 // Delete User
 export const deleteUser = async (req, res, next) => {
     try {
-        // remove an User
-        const removeUser = await userModel.findByIdAndDelete(req.params.body)
-        // return response
-        res.json(removeUser)
+        // Remove a user
+        const removeUser = await userModel.findByIdAndDelete(req.params.id);
+        // Return response
+        res.status(204).json(removeUser);
     } catch (error) {
-        next(error)
+        next(error);
     }
-}
+};
 
 
     

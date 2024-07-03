@@ -1,4 +1,4 @@
-import {schema, model} from mongoose;
+import { Schema, model } from "mongoose";
 
 const eventSchema = new Schema({
     name: {type: String, required: true},
@@ -9,4 +9,4 @@ const eventSchema = new Schema({
     timestamps: true,
 })
 
-export const eventModel = model('event', eventModel);
+export const eventModel = model('event', eventSchema);
