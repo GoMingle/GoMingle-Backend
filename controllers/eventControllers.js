@@ -29,7 +29,6 @@ export const postEvent = async (req, res, next) => {
 
 
 // update Event
-//
 export const patchEvent = async (req, res, next) => {
    try {
        const updateEvents = await EventModel.findByIdAndUpdate(req.params.id, req.body, {new: true})
