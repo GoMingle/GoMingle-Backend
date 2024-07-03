@@ -7,4 +7,5 @@ const categorySchema = new Schema ({
     timestamps: true
 })
 
+// Export CategoryModel
 export const categoryModel = model('category', categorySchema);

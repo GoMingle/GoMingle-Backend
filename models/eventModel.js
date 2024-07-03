@@ -11,4 +11,5 @@ const eventSchema = new Schema({
     timestamps: true,
 })
 
+// e
 export const eventModel = model('event', eventSchema);
