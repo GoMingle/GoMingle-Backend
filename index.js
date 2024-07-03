@@ -1,7 +1,7 @@
 import express from "express";
-import mongoose from "mongoose";
 import { dbconnection } from "./config/db.js";
 import EventRouter from "./routes/eventRoutes.js";
+import CategoryRouter from "./routes/categoryRoutes.js";
 
 
 // Connect to express app
@@ -14,9 +14,11 @@ app.use(express.json());
 
 // Use routes
 app.use(EventRouter);
+app.use(CategoryRouter);
+
 // app.use();
 
-const port = process.env.PORT || 9000;
+const port = process.env.PORT || 8000;
 app.listen(port, () => {
     console.log(`App listening on port ${port}`);
 });
