@@ -8,8 +8,4 @@ const authRouter = Router();
 authRouter.post('/user', signupUser);
 authRouter.post('/user', loginUser);
 
-authRouter.post('/user', postUser);
-authRouter.patch('/user', patchUser);
-authRouter.delete('user', deleteUser);
-
 export default authRouter;
