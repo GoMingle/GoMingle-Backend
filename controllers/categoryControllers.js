@@ -3,7 +3,7 @@ import { categoryModel } from "../models/categoryModel.js";
 export const getCategories = async (req, res, next) => {
     try {
         const retrieveCategories = await categoryModel.find();
-        res.json(retrieveCategories);
+        res.status(200).json(retrieveCategories);
     } catch (error) {
         next(error)
     }
@@ -13,7 +13,7 @@ export const getCategories = async (req, res, next) => {
 export const postCategory = async (req, res, next) => {
     try {
         const addCategory = await categoryModel.create(req.body);
-        res.json(addCategory);
+        res.status(201).json(addCategory);
     } catch (error) {
         next(error);
     }
@@ -23,7 +23,7 @@ export const postCategory = async (req, res, next) => {
 // export const patchCategory = async (req, res, next) => {
 //     try {
 //         const updateCategory = await categoryModel.findByIdAndUpdate(req.params.id, req.body, {new: true})
-//         res.json(updateCategory);
+//         res.status(200).json(updateCategory);
 //     } catch (error) {
 //         next(error)
 //     }
@@ -33,7 +33,7 @@ export const postCategory = async (req, res, next) => {
 //  export const deleteEvent = async (req, res, next) => {
 //      try {
 //          const removeCategory = await categoryModel.findByIdAndDelete(req.params.body)
-//          res.json(removeCategory)
+//          res.status(200).json(removeCategory)
 //      } catch (error) {
 //          next(error)
 //      }
