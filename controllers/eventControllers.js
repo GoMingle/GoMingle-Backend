@@ -8,7 +8,7 @@ export const getEvents = async (req, res, next) => {
    try {
        // Get events from database
        const retrieveEvents = await eventModel.find();
-       res.json(retrieveEvents);
+       res.status(200).json(retrieveEvents);
    } catch (error) {
        next(error);
    }
@@ -21,7 +21,7 @@ export const postEvent = async (req, res, next) => {
        // Add event to database
        const newEvent = await eventModel.create(req.body);
        // Return response
-       res.json(newEvent)
+       res.status(201).json(newEvent)
    } catch (error) {
        next(error)
    }
@@ -32,7 +32,7 @@ export const postEvent = async (req, res, next) => {
 export const patchEvent = async (req, res, next) => {
    try {
        const updateEvents = await eventModel.findByIdAndUpdate(req.params.id, req.body, {new: true})
-       res.json(updateEvents);
+       res.status(200).json(updateEvents);
        // console.log(updateEvents);
    } catch (error) {
        next(error)
@@ -45,7 +45,7 @@ export const deleteEvent = async (req, res, next) => {
         // remove an event
         const removeEvent = await eventModel.findByIdAndDelete(req.params.body)
         // return response
-        res.json(removeEvent)
+        res.status(200).json(removeEvent)
     } catch (error) {
         next(error)
     }
