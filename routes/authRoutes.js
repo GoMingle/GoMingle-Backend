@@ -5,7 +5,7 @@ import { signupUser, loginUser } from "../controllers/auth_controller.js";
 const authRouter = Router();
 
 // userlogin and signup
-authRouter.post('/user', signupUser);
-authRouter.post('/user', loginUser);
+authRouter.post('/user/signup', signupUser);
+authRouter.get('/user/login', loginUser);
 
 export default authRouter;
