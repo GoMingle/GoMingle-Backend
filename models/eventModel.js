@@ -7,7 +7,7 @@ const eventSchema = new Schema({
     location: {type: String},
     createdAt: {type: Date},
     updatedAt: {type: Date},
-    flier: {type: String, required: true},
+    image: {type: String, required: true},
     category: { type: Types.ObjectId, ref: 'category' }
 }, {
     timestamps: true,
