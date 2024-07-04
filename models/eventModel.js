@@ -1,4 +1,5 @@
-import {Schema, model} from 'mongoose';
+import {Schema, model, Types} from 'mongoose';
+import { toJSON } from "@reis/mongoose-to-json";
 
 const eventSchema = new Schema({
     name: {type: String, required: true},
@@ -7,9 +8,11 @@ const eventSchema = new Schema({
     createdAt: {type: Date},
     updatedAt: {type: Date},
     flier: {type: String, required: true},
+    category: { type: Types.ObjectId, ref: 'category' }
 }, {
     timestamps: true,
 })
 
-// e
+eventSchema.plugin(toJSON);
+// export event model
 export const eventModel = model('event', eventSchema);

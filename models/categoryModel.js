@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import { toJSON } from "@reis/mongoose-to-json";
 
 const categorySchema = new Schema ({
     categoryName: {type: String, required: true, unique: true},
@@ -7,5 +8,7 @@ const categorySchema = new Schema ({
     timestamps: true
 })
 
+
+categorySchema.plugin(toJSON);
 // Export CategoryModel
 export const categoryModel = model('category', categorySchema);
