@@ -13,7 +13,7 @@ import authRouter from "./routes/authRoutes.js";
 const app = express();
 expressOasGenerator.handleResponses(app, {
     alwaysServeDocs: true,
-    tags: ['Users', 'Events', 'Event Categories'],
+    // tags: ['Events', 'Event Categories', 'Users'],
     mongooseModels: mongoose.modelNames(),
 });
 
