@@ -12,7 +12,10 @@ export const getCategories = async (req, res, next) => {
 // Run Once to populate the database
 export const postCategory = async (req, res, next) => {
     try {
-        const addCategory = await categoryModel.create(req.body);
+        const addCategory = await categoryModel.create({
+            ...req.body,
+            image: req.file.filename
+        });
         res.status(201).json(addCategory);
     } catch (error) {
         next(error);
