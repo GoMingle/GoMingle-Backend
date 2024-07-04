@@ -25,9 +25,13 @@ export const getAllevents = async (req, res, next) => {
 export const postEvent = async (req, res, next) => {
     try {
         // Add event to database
-        const newEvent = await eventModel.create(req.body);
+        const addEvent = await eventModel.create({
+            ...req.body,
+            image: req.file.filename
+        });
+        res.status(201).json(addEvent);
         // Return response
-        res.status(201).json(newEvent)
+        res.status(201).json(addEvent)
     } catch (error) {
         next(error)
     }
