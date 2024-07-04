@@ -1,9 +1,10 @@
 import { Router } from "express";
-import { getEvents, postEvent, patchEvent, deleteEvent } from "../controllers/eventControllers.js";
+import { getAllevents, postEvent, patchEvent, deleteEvent, getEventById } from "../controllers/eventControllers.js";
 
 const eventRouter = Router();
 
-eventRouter.get('/events', getEvents);
+eventRouter.get('/events', getAllevents);
+eventRouter.get('/events/:id', getEventById);
 eventRouter.post('/events', postEvent);
 eventRouter.patch('/events/:id', patchEvent);
 eventRouter.delete('/events/:id', deleteEvent);
