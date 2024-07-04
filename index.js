@@ -1,7 +1,8 @@
 import cors from "cors";
 import express from "express";
-import { dbconnection } from "./config/db.js";
+import mongoose from "mongoose";
 import expressOasGenerator from "express-oas-generator";
+import { dbconnection } from "./config/db.js";
 import EventRouter from "./routes/eventRoutes.js";
 import CategoryRouter from "./routes/categoryRoutes.js";
 import authRouter from "./routes/authRoutes.js";
@@ -10,6 +11,11 @@ import authRouter from "./routes/authRoutes.js";
 
 // Connect to express app
 const app = express();
+expressOasGenerator.handleResponses(app, {
+    alwaysServeDocs: true,
+    tags: ['Users', 'Events', 'Event Categories'],
+    mongooseModels: mongoose.modelNames(),
+});
 
 // Database connection
 dbconnection();
