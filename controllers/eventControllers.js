@@ -74,3 +74,28 @@ export const getEventById = async (req, res) => {
 }
 
 
+//  fetch events by date
+export const getEventsByDate = async (req, res) => {
+    try {
+        const { startDate, endDate } = req.query;
+        // A query to find events within the date range
+        let query = {};
+        if (startDate && endDate) {
+            query = {
+                date: {
+                    // $g(l)te means greater(less) than or equalTo
+                    $gte: new Date(startDate), 
+                    $lte: new Date(endDate)
+                }
+            };
+        }
+
+        // Fetch the events from the database
+        const events = await eventModel.find(query, 'name price location flier');
+
+        // Send back the events
+        res.status(200).json(events);
+    } catch (error) {
+        res.status(500).json({ message: 'An error occurred', error });
+    }
+};
