@@ -91,7 +91,7 @@ export const getEventsByDate = async (req, res) => {
         }
 
         // Fetch the events from the database
-        const events = await eventModel.find(query, 'name price location flier');
+        const events = await eventModel.find(query, 'eventName description price location image date');
 
         // Send back the events
         res.status(200).json(events);
